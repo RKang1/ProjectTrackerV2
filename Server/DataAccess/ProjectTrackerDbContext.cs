@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Server.ModelConfigurations;
-using Server.Models;
+using TaskStatusModel = Server.Models.TaskStatusModel;
+using TaskModel = Server.Models.TaskModel;
 
 namespace Server.DataAccess
 {
@@ -12,9 +13,10 @@ namespace Server.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new StatusTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new TaskStatusModelConfiguration());
         }
 
-        public DbSet<Models.TaskStatus> TaskStatuses { get; set; }
+        public DbSet<TaskStatusModel> TaskStatuses { get; set; }
+        public DbSet<TaskModel> Tasks { get; set; }
     }
 }
