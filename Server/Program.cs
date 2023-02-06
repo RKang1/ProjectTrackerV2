@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMySQLServer<ProjectTrackerDbContext>(builder.Configuration.GetConnectionString("ProjectTrackerDb") ?? string.Empty);
+builder.Services.AddMySQLServer<AppDbContext>(builder.Configuration.GetConnectionString("ProjectTrackerDb") ?? string.Empty);
 
 var app = builder.Build();
 

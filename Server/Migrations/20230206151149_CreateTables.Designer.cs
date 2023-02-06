@@ -10,7 +10,7 @@ using Server.DAL.Context;
 
 namespace Server.Migrations
 {
-    [DbContext(typeof(ProjectTrackerDbContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20230206151149_CreateTables")]
     partial class CreateTables
     {

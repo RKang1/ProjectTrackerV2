@@ -1,20 +1,20 @@
 ﻿using Server.DAL.Context;
-using Server.Enums;
+using Server.Models;
 
 namespace Server.DAL.DAOs
 {
     public class StatusDao
     {
-        private readonly ProjectTrackerDbContext dbContext;
+        private readonly IAppDbContext dbContext;
 
-        public StatusDao(ProjectTrackerDbContext dbContext)
+        public StatusDao(IAppDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        public IEnumerable<StatusType> GetAll()
+        public IEnumerable<StatusModel> GetAll()
         {
-            return (IEnumerable<StatusType>)dbContext.StatusTypes.ToList();
+            return dbContext.StatusTypes.ToList();
         }
     }
 }

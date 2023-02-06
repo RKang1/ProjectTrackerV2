@@ -9,7 +9,7 @@ using Server.DAL.Context;
 
 namespace Server.Migrations
 {
-    [DbContext(typeof(ProjectTrackerDbContext))]
+    [DbContext(typeof(AppDbContext))]
     partial class ProjectTrackerDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

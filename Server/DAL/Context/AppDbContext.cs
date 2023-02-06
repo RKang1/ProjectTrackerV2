@@ -4,9 +4,15 @@ using Server.Models;
 
 namespace Server.DAL.Context
 {
-    public class ProjectTrackerDbContext : DbContext
+    public interface IAppDbContext
     {
-        public ProjectTrackerDbContext(DbContextOptions<ProjectTrackerDbContext> options) : base(options)
+        public DbSet<StatusModel> StatusTypes { get; set; }
+        public DbSet<TaskModel> Tasks { get; set; }
+    }
+
+    public class AppDbContext : DbContext, IAppDbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
 

@@ -1,14 +1,15 @@
 ﻿using Server.DAL.Context;
 using Server.DAL.DAOs;
 using Server.Enums;
+using Server.Models;
 
 namespace Server.Tests
 {
     public class StatusTests
     {
-        private readonly ProjectTrackerDbContext dbContext;
+        private readonly AppDbContext dbContext;
 
-        public StatusTests(ProjectTrackerDbContext dbContext)
+        public StatusTests(AppDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
@@ -18,7 +19,7 @@ namespace Server.Tests
         {
             StatusDao dao = new(dbContext);
 
-            IEnumerable<StatusType> statuses = dao.GetAll();
+            IEnumerable<StatusModel> statuses = dao.GetAll();
 
             Assert.NotNull(statuses);
         }
@@ -28,11 +29,11 @@ namespace Server.Tests
         {
             StatusDao dao = new(dbContext);
 
-            IEnumerable<StatusType> statuses = dao.GetAll();
+            IEnumerable<StatusModel> statuses = dao.GetAll();
 
             foreach (StatusType statusType in Enum.GetValues(typeof(StatusType)))
             {
-                Assert.Contains(statusType, statuses)
+                Assert.Contains(statusType, statuses.Select(s => s.StatusType));
             }
         }
     }
