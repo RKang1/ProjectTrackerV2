@@ -9,8 +9,6 @@ namespace Server.ModelConfigurations
     {
         public void Configure(EntityTypeBuilder<Models.TaskStatusModel> builder)
         {
-            builder.Property(p => p.Id).UseMySQLAutoIncrementColumn("int");
-
             builder.HasData(
                 new TaskStatusModel
                 {
