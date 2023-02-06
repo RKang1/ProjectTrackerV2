@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Server.ModelConfigurations;
-using TaskStatusModel = Server.Models.TaskStatusModel;
-using TaskModel = Server.Models.TaskModel;
+using Server.Models;
 
 namespace Server.DataAccess
 {

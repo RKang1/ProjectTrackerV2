@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MySql.EntityFrameworkCore.Extensions;
-using TaskStatus = Server.Models.TaskStatusModel;
+using Server.Models;
 
 namespace Server.ModelConfigurations
 {
@@ -12,22 +12,22 @@ namespace Server.ModelConfigurations
             builder.Property(p => p.Id).UseMySQLAutoIncrementColumn("int");
 
             builder.HasData(
-                new TaskStatus
+                new TaskStatusModel
                 {
                     Id = 1,
                     DisplayName = "To Do"
                 },
-                new TaskStatus
+                new TaskStatusModel
                 {
                     Id = 2,
                     DisplayName = "In Progress"
                 },
-                new TaskStatus
+                new TaskStatusModel
                 {
                     Id = 3,
                     DisplayName = "Waiting"
                 },
-                new TaskStatus
+                new TaskStatusModel
                 {
                     Id = 4,
                     DisplayName = "Completed"
