@@ -1,4 +1,6 @@
-﻿namespace Server.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Server.Models
 {
     public class TaskModel
     {
@@ -6,7 +8,7 @@
         public string? Name { get; set; }
         public string? Description { get; set; }
         public string? Comments { get; set; }
-        public TaskStatusModel? Status { get; set; }
+        public StatusModel? Status { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
     }

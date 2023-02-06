@@ -1,5 +1,5 @@
 using MySql.EntityFrameworkCore.Extensions;
-using Server.DataAccess;
+using Server.Migrations.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 

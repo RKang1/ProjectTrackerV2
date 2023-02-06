@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Server.DataAccess;
+using Server.Migrations.Context;
 
 #nullable disable
 
@@ -18,6 +18,42 @@ namespace Server.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("Server.Models.StatusModel", b =>
+                {
+                    b.Property<int>("StatusType")
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("DisplayName")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("StatusType");
+
+                    b.ToTable("Statuses");
+
+                    b.HasData(
+                        new
+                        {
+                            StatusType = 1,
+                            DisplayName = "To Do"
+                        },
+                        new
+                        {
+                            StatusType = 2,
+                            DisplayName = "In Progress"
+                        },
+                        new
+                        {
+                            StatusType = 3,
+                            DisplayName = "Waiting"
+                        },
+                        new
+                        {
+                            StatusType = 4,
+                            DisplayName = "Completed"
+                        });
+                });
 
             modelBuilder.Entity("Server.Models.TaskModel", b =>
                 {
@@ -40,57 +76,21 @@ namespace Server.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("StatusId")
+                    b.Property<int?>("StatusType")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StatusId");
+                    b.HasIndex("StatusType");
 
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("Server.Models.TaskStatusModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("DisplayName")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TaskStatuses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DisplayName = "To Do"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DisplayName = "In Progress"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DisplayName = "Waiting"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DisplayName = "Completed"
-                        });
-                });
-
             modelBuilder.Entity("Server.Models.TaskModel", b =>
                 {
-                    b.HasOne("Server.Models.TaskStatusModel", "Status")
+                    b.HasOne("Server.Models.StatusModel", "Status")
                         .WithMany()
-                        .HasForeignKey("StatusId");
+                        .HasForeignKey("StatusType");
 
                     b.Navigation("Status");
                 });

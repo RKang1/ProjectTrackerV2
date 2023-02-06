@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Server.ModelConfigurations;
+using Server.Migrations.Configurations;
 using Server.Models;
 
-namespace Server.DataAccess
+namespace Server.Migrations.Context
 {
     public class ProjectTrackerDbContext : DbContext
     {
@@ -12,10 +12,10 @@ namespace Server.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new TaskStatusModelConfiguration());
+            modelBuilder.ApplyConfiguration(new StatusModelConfiguration());
         }
 
-        public DbSet<TaskStatusModel> TaskStatuses { get; set; }
+        public DbSet<StatusModel> Statuses { get; set; }
         public DbSet<TaskModel> Tasks { get; set; }
     }
 }
