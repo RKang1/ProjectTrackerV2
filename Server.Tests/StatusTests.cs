@@ -1,14 +1,22 @@
 ﻿using Server.DataAccessObjects;
 using Server.Enums;
+using Server.Migrations.Context;
 
 namespace Server.Tests
 {
     public class StatusTests
     {
+        private readonly ProjectTrackerDbContext dbContext;
+
+        public StatusTests(ProjectTrackerDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+
         [Fact]
         public void GetAllStatuses()
         {
-            StatusDao dao = new();
+            StatusDao dao = new(dbContext);
 
             IEnumerable<StatusType> statuses = dao.GetAll();
 
@@ -18,7 +26,7 @@ namespace Server.Tests
         [Fact]
         public void CheckEnumExistsInDatabase()
         {
-            StatusDao dao = new();
+            StatusDao dao = new(dbContext);
 
             IEnumerable<StatusType> statuses = dao.GetAll();
 
