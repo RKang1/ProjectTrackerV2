@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Server.Migrations.Configurations;
+using Server.DAL.ModelConfigurations;
 using Server.Models;
 
-namespace Server.Migrations.Context
+namespace Server.DAL.Context
 {
     public class ProjectTrackerDbContext : DbContext
     {

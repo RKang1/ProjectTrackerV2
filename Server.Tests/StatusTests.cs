@@ -1,6 +1,6 @@
-﻿using Server.DataAccessObjects;
+﻿using Server.DAL.Context;
+using Server.DAL.DAOs;
 using Server.Enums;
-using Server.Migrations.Context;
 
 namespace Server.Tests
 {
@@ -32,7 +32,7 @@ namespace Server.Tests
 
             foreach (StatusType statusType in Enum.GetValues(typeof(StatusType)))
             {
-                Assert.Contains(statusType, statuses);
+                Assert.Contains(statusType, statuses)
             }
         }
     }

@@ -1,7 +1,7 @@
-﻿using Server.Enums;
-using Server.Migrations.Context;
+﻿using Server.DAL.Context;
+using Server.Enums;
 
-namespace Server.DataAccessObjects
+namespace Server.DAL.DAOs
 {
     public class StatusDao
     {

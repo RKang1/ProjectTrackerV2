@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Server.Enums;
 using Server.Models;
 
-namespace Server.Migrations.Configurations
+namespace Server.DAL.ModelConfigurations
 {
     public class StatusModelConfiguration : IEntityTypeConfiguration<StatusModel>
     {
