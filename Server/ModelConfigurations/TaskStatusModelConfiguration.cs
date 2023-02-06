@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MySql.EntityFrameworkCore.Extensions;
+using Server.Enums;
 using Server.Models;
 
 namespace Server.ModelConfigurations
@@ -12,22 +12,26 @@ namespace Server.ModelConfigurations
             builder.HasData(
                 new TaskStatusModel
                 {
-                    Id = 1,
+                    Id = (int)StatusType.ToDo,
+                    Status = StatusType.ToDo,
                     DisplayName = "To Do"
                 },
                 new TaskStatusModel
                 {
-                    Id = 2,
+                    Id = (int)StatusType.InProgress,
+                    Status = StatusType.InProgress,
                     DisplayName = "In Progress"
                 },
                 new TaskStatusModel
                 {
-                    Id = 3,
+                    Id = (int)StatusType.Waiting,
+                    Status = StatusType.Waiting,
                     DisplayName = "Waiting"
                 },
                 new TaskStatusModel
                 {
-                    Id = 4,
+                    Id = (int)StatusType.Completed,
+                    Status = StatusType.Completed,
                     DisplayName = "Completed"
                 }
             );
