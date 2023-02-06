@@ -5,7 +5,7 @@ namespace Server.DAL.DAOs
 {
     public class TaskDao
     {
-        private AppDbContext dbContext;
+        private readonly AppDbContext dbContext;
 
         public TaskDao(AppDbContext dbContext)
         {
