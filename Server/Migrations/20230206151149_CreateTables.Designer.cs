@@ -11,7 +11,7 @@ using Server.Migrations.Context;
 namespace Server.Migrations
 {
     [DbContext(typeof(ProjectTrackerDbContext))]
-    [Migration("20230206150836_CreateTables")]
+    [Migration("20230206151149_CreateTables")]
     partial class CreateTables
     {
         /// <inheritdoc />
@@ -33,7 +33,7 @@ namespace Server.Migrations
 
                     b.HasKey("StatusType");
 
-                    b.ToTable("Statuses");
+                    b.ToTable("StatusTypes");
 
                     b.HasData(
                         new

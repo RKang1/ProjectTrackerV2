@@ -30,7 +30,7 @@ namespace Server.Migrations
 
                     b.HasKey("StatusType");
 
-                    b.ToTable("Statuses");
+                    b.ToTable("StatusTypes");
 
                     b.HasData(
                         new

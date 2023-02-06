@@ -18,7 +18,7 @@ namespace Server.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Statuses",
+                name: "StatusTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
@@ -26,7 +26,7 @@ namespace Server.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Statuses", x => x.Id);
+                    table.PrimaryKey("PK_StatusTypes", x => x.Id);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -47,15 +47,15 @@ namespace Server.Migrations
                 {
                     table.PrimaryKey("PK_Tasks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tasks_Statuses_StatusType",
+                        name: "FK_Tasks_StatusTypes_StatusType",
                         column: x => x.StatusType,
-                        principalTable: "Statuses",
+                        principalTable: "StatusTypes",
                         principalColumn: "Id");
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.InsertData(
-                table: "Statuses",
+                table: "StatusTypes",
                 columns: new[] { "Id", "DisplayName" },
                 values: new object[,]
                 {
@@ -78,7 +78,7 @@ namespace Server.Migrations
                 name: "Tasks");
 
             migrationBuilder.DropTable(
-                name: "Statuses");
+                name: "StatusTypes");
         }
     }
 }

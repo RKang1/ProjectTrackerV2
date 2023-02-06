@@ -15,7 +15,7 @@ namespace Server.Migrations.Context
             modelBuilder.ApplyConfiguration(new StatusModelConfiguration());
         }
 
-        public DbSet<StatusModel> Statuses { get; set; }
+        public DbSet<StatusModel> StatusTypes { get; set; }
         public DbSet<TaskModel> Tasks { get; set; }
     }
 }
