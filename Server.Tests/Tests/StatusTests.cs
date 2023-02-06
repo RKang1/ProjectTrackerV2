@@ -7,13 +7,13 @@ using Server.Models;
 
 namespace Server.Tests.Tests
 {
-    public class StatusTypeTests
+    public class StatusTests
     {
         private readonly IAppDbContext dbContext;
 
-        public StatusTypeTests()
+        public StatusTests()
         {
-            var builder = new ConfigurationBuilder().AddUserSecrets<StatusTypeTests>().Build();
+            var builder = new ConfigurationBuilder().AddUserSecrets<StatusTests>().Build();
             dbContext = new AppDbContext(new DbContextOptionsBuilder<AppDbContext>().UseMySQL(builder.GetConnectionString("ProjectTrackerDb") ?? string.Empty).Options);
         }
 
