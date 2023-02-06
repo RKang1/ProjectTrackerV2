@@ -4,6 +4,7 @@ using Server.DAL.Context;
 using Server.DAL.DAOs;
 using Server.Enums;
 using Server.Models;
+using Server.Tests.DAL;
 
 namespace Server.Tests.Tests
 {
@@ -13,8 +14,7 @@ namespace Server.Tests.Tests
 
         public StatusTests()
         {
-            var builder = new ConfigurationBuilder().AddUserSecrets<StatusTests>().Build();
-            dbContext = new AppDbContext(new DbContextOptionsBuilder<AppDbContext>().UseMySQL(builder.GetConnectionString("ProjectTrackerDb") ?? string.Empty).Options);
+            dbContext = DbContextHelper.GetDbContext();
         }
 
         [Fact]

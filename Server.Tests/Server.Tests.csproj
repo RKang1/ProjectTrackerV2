@@ -29,8 +29,4 @@
     <ProjectReference Include="..\Server\Server.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DAL\Context\" />
-  </ItemGroup>
-
 </Project>
