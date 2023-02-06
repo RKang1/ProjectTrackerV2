@@ -10,7 +10,7 @@ namespace Server.Tests.Tests
 {
     public class StatusTests
     {
-        private readonly IAppDbContext dbContext;
+        private readonly AppDbContext dbContext;
 
         public StatusTests()
         {

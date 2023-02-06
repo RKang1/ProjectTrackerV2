@@ -1,16 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Server.DAL.ModelConfigurations;
 using Server.Models;
+using System.Runtime.CompilerServices;
 
 namespace Server.DAL.Context
 {
-    public interface IAppDbContext
-    {
-        public DbSet<StatusModel> StatusTypes { get; set; }
-        public DbSet<TaskModel> Tasks { get; set; }
-    }
-
-    public class AppDbContext : DbContext, IAppDbContext
+    public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

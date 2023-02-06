@@ -6,9 +6,9 @@ namespace Server.DAL.DAOs
 {
     public class StatusDao
     {
-        private readonly IAppDbContext dbContext;
+        private readonly AppDbContext dbContext;
 
-        public StatusDao(IAppDbContext dbContext)
+        public StatusDao(AppDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
