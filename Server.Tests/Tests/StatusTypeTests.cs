@@ -1,21 +1,24 @@
-﻿using Server.DAL.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Server.DAL.Context;
 using Server.DAL.DAOs;
 using Server.Enums;
 using Server.Models;
 
-namespace Server.Tests
+namespace Server.Tests.Tests
 {
-    public class StatusTests
+    public class StatusTypeTests
     {
-        private readonly AppDbContext dbContext;
+        private readonly IAppDbContext dbContext;
 
-        public StatusTests(AppDbContext dbContext)
+        public StatusTypeTests()
         {
-            this.dbContext = dbContext;
+            var builder = new ConfigurationBuilder().AddUserSecrets<StatusTypeTests>().Build();
+            dbContext = new AppDbContext(new DbContextOptionsBuilder<AppDbContext>().UseMySQL(builder.GetConnectionString("ProjectTrackerDb") ?? string.Empty).Options);
         }
 
         [Fact]
-        public void GetAllStatuses()
+        public void GetAllStatusTypes()
         {
             StatusDao dao = new(dbContext);
 
@@ -25,7 +28,7 @@ namespace Server.Tests
         }
 
         [Fact]
-        public void CheckEnumExistsInDatabase()
+        public void CheckStatusTypeEnumExistsInDatabase()
         {
             StatusDao dao = new(dbContext);
 
