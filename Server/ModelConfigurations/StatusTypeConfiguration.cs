@@ -1,33 +1,33 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MySql.EntityFrameworkCore.Extensions;
-using Server.Models;
+using TaskStatus = Server.Models.TaskStatus;
 
 namespace Server.ModelConfigurations
 {
-    public class StatusTypeConfiguration : IEntityTypeConfiguration<StatusType>
+    public class StatusTypeConfiguration : IEntityTypeConfiguration<Models.TaskStatus>
     {
-        public void Configure(EntityTypeBuilder<StatusType> builder)
+        public void Configure(EntityTypeBuilder<Models.TaskStatus> builder)
         {
             builder.Property(p => p.Id).UseMySQLAutoIncrementColumn("int");
 
             builder.HasData(
-                new StatusType
+                new TaskStatus
                 {
                     Id= 1,
                     DisplayName = "To Do"
                 },
-                new StatusType
+                new TaskStatus
                 {
                     Id= 2,
                     DisplayName = "In Progress"
                 },
-                new StatusType
+                new TaskStatus
                 {
                     Id= 3,
                     DisplayName = "Waiting"
                 },
-                new StatusType
+                new TaskStatus
                 {
                     Id= 4,
                     DisplayName = "Completed"

@@ -15,6 +15,6 @@ namespace Server.DataAccess
             modelBuilder.ApplyConfiguration(new StatusTypeConfiguration());
         }
 
-        public DbSet<StatusType> StatusTypes { get; set; }
+        public DbSet<Models.TaskStatus> TaskStatuses { get; set; }
     }
 }
