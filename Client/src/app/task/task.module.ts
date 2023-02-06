@@ -10,6 +10,9 @@ import { TaskComponent } from './task.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    TaskComponent
   ]
 })
 export class TaskModule { }
