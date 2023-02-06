@@ -1,4 +1,5 @@
-﻿using Server.DAL.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using Server.DAL.Context;
 using Server.Models;
 
 namespace Server.DAL.DAOs
@@ -14,7 +15,7 @@ namespace Server.DAL.DAOs
 
         public IEnumerable<StatusModel> GetAll()
         {
-            return dbContext.StatusTypes.ToList();
+            return dbContext.StatusTypes.AsNoTracking().ToList();
         }
     }
 }
