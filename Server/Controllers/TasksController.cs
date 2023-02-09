@@ -23,14 +23,14 @@ namespace Server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TaskModel>>> GetTasks()
         {
-            return Ok(await taskDao.GetTasks());
+            return Ok(await taskDao.GetAll());
         }
 
         // GET: api/Tasks/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TaskModel>> GetTask(int id)
         {
-            var taskModel = await taskDao.GetTask(id);
+            var taskModel = await taskDao.GetById(id);
 
             if (taskModel == null)
             {
@@ -54,11 +54,11 @@ namespace Server.Controllers
 
             try
             {
-                await context.SaveChangesAsync();
+                await taskDao.Update(taskModel);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TaskModelExists(id))
+                if (!taskDao.TaskExists(id))
                 {
                     return NotFound();
                 }
@@ -76,8 +76,7 @@ namespace Server.Controllers
         [HttpPost]
         public async Task<ActionResult<TaskModel>> PostTaskModel(TaskModel taskModel)
         {
-            context.Tasks.Add(taskModel);
-            await context.SaveChangesAsync();
+            await taskDao.Create(taskModel);
 
             return CreatedAtAction("GetTaskModel", new { id = taskModel.Id }, taskModel);
         }
@@ -86,21 +85,15 @@ namespace Server.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTaskModel(int id)
         {
-            var taskModel = await context.Tasks.FindAsync(id);
+            var taskModel = await taskDao.GetById(id);
             if (taskModel == null)
             {
                 return NotFound();
             }
 
-            context.Tasks.Remove(taskModel);
-            await context.SaveChangesAsync();
+            await taskDao.Delete(taskModel);
 
             return NoContent();
-        }
-
-        private bool TaskModelExists(int id)
-        {
-            return context.Tasks.Any(e => e.Id == id);
         }
     }
 }
