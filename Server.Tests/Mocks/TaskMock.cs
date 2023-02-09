@@ -4,9 +4,9 @@ namespace Server.Tests.Mocks
 {
     public class TaskMock
     {
-        public static Models.Task MockTask(int id = -1)
+        public static TaskModel MockTask(int id = -1)
         {
-            return new Models.Task()
+            return new TaskModel()
             {
                 Id = id,
                 Name = $"Test {id}",
@@ -17,9 +17,9 @@ namespace Server.Tests.Mocks
             };
         }
 
-        public static IEnumerable<Models.Task> MockMultipleTasks()
+        public static IEnumerable<TaskModel> MockMultipleTasks()
         {
-            List<Models.Task> tasks = new();
+            List<TaskModel> tasks = new();
 
             for(int i = -1; i > -3; i--)
             {

@@ -12,24 +12,24 @@ namespace Server.DAL.DAOs
             this.dbContext = dbContext;
         }
 
-        public void Create(Models.Task task)
+        public void Create(TaskModel task)
         {
             dbContext.Tasks.Add(task);
             dbContext.SaveChanges();
         }
 
-        public void CreateMultiple(IEnumerable<Models.Task> tasks)
+        public void CreateMultiple(IEnumerable<TaskModel> tasks)
         {
             dbContext.Tasks.AddRange(tasks);
             dbContext.SaveChanges();
         }
 
-        public IEnumerable<Models.Task> GetAll()
+        public IEnumerable<TaskModel> GetAll()
         {
             return dbContext.Tasks;
         }
 
-        public Models.Task? GetById(int id)
+        public TaskModel? GetById(int id)
         {
             return dbContext.Tasks.SingleOrDefault(t => t.Id == id);
         }

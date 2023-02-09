@@ -22,7 +22,7 @@ namespace Server.Tests.Tests
 
             TaskDao dao = new(dbContext);
 
-            Models.Task task = TaskMock.MockTask();
+            TaskModel task = TaskMock.MockTask();
             dao.Create(task);
 
             Assert.NotNull(dao.GetById(task.Id));
@@ -37,10 +37,10 @@ namespace Server.Tests.Tests
 
             TaskDao dao = new(dbContext);
 
-            IEnumerable<Models.Task> mockTasks = TaskMock.MockMultipleTasks();
+            IEnumerable<TaskModel> mockTasks = TaskMock.MockMultipleTasks();
             dao.CreateMultiple(mockTasks);
 
-            IEnumerable<Models.Task> tasks = dao.GetAll();
+            IEnumerable<TaskModel> tasks = dao.GetAll();
 
             Assert.True(tasks.Any());
 

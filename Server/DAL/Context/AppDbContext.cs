@@ -16,7 +16,7 @@ namespace Server.DAL.Context
             modelBuilder.ApplyConfiguration(new StatusModelConfiguration());
         }
 
-        public DbSet<Status> StatusTypes { get; set; }
-        public DbSet<Models.Task> Tasks { get; set; }
+        public DbSet<StatusModel> StatusTypes { get; set; }
+        public DbSet<TaskModel> Tasks { get; set; }
     }
 }

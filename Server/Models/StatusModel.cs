@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Server.Models
 {
-    public class Status
+    public class StatusModel
     {
         [Key]
         [Column("Id")]
