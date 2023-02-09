@@ -6,29 +6,29 @@ using Server.Models;
 
 namespace Server.DAL.ModelConfigurations
 {
-    public class StatusModelConfiguration : IEntityTypeConfiguration<StatusModel>
+    public class StatusModelConfiguration : IEntityTypeConfiguration<Status>
     {
-        public void Configure(EntityTypeBuilder<StatusModel> builder)
+        public void Configure(EntityTypeBuilder<Status> builder)
         {
             builder.Property(p => p.StatusType).HasConversion(new EnumToNumberConverter<StatusType, int>());
 
             builder.HasData(
-                new StatusModel
+                new Status
                 {
                     StatusType = StatusType.ToDo,
                     DisplayName = "To Do"
                 },
-                new StatusModel
+                new Status
                 {
                     StatusType = StatusType.InProgress,
                     DisplayName = "In Progress"
                 },
-                new StatusModel
+                new Status
                 {
                     StatusType = StatusType.Waiting,
                     DisplayName = "Waiting"
                 },
-                new StatusModel
+                new Status
                 {
                     StatusType = StatusType.Completed,
                     DisplayName = "Completed"

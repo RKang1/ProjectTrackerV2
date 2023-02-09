@@ -13,7 +13,7 @@ namespace Server.DAL.DAOs
             this.dbContext = dbContext;
         }
 
-        public IEnumerable<StatusModel> GetAll()
+        public IEnumerable<Status> GetAll()
         {
             return dbContext.StatusTypes.AsNoTracking().ToList();
         }

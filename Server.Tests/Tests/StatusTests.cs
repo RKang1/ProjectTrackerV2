@@ -22,7 +22,7 @@ namespace Server.Tests.Tests
         {
             StatusDao dao = new(dbContext);
 
-            IEnumerable<StatusModel> statuses = dao.GetAll();
+            IEnumerable<Status> statuses = dao.GetAll();
 
             Assert.NotNull(statuses);
         }
@@ -32,7 +32,7 @@ namespace Server.Tests.Tests
         {
             StatusDao dao = new(dbContext);
 
-            IEnumerable<StatusModel> statuses = dao.GetAll();
+            IEnumerable<Status> statuses = dao.GetAll();
 
             foreach (StatusType statusType in Enum.GetValues(typeof(StatusType)))
             {
