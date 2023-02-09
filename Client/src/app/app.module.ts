@@ -3,14 +3,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { TaskModule } from './task/task.module';
+import { TaskTableComponent } from './task-table/task-table.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TaskTableComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, TaskModule
+    BrowserModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
