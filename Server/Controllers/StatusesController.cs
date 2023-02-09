@@ -9,13 +9,11 @@ namespace Server.Controllers
     [ApiController]
     public class StatusesController : ControllerBase
     {
-        private readonly AppDbContext context;
         private readonly StatusDao statusDao;
 
         public StatusesController(AppDbContext context)
         {
-            this.context = context;
-            this.statusDao = new StatusDao(context);
+            statusDao = new StatusDao(context);
         }
 
         // GET: api/Statuses

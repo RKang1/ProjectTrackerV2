@@ -10,12 +10,10 @@ namespace Server.Controllers
     [ApiController]
     public class TasksController : ControllerBase
     {
-        private readonly AppDbContext context;
         private readonly TaskDao taskDao;
 
         public TasksController(AppDbContext context)
         {
-            this.context = context;
             taskDao = new TaskDao(context);
         }
 
@@ -49,8 +47,6 @@ namespace Server.Controllers
             {
                 return BadRequest();
             }
-
-            context.Entry(taskModel).State = EntityState.Modified;
 
             try
             {
