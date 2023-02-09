@@ -1,37 +1,38 @@
-﻿using Server.DAL.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using Server.DAL.Context;
 using Server.Models;
 
 namespace Server.DAL.DAOs
 {
     public class TaskDao
     {
-        private readonly AppDbContext dbContext;
+        private readonly AppDbContext context;
 
-        public TaskDao(AppDbContext dbContext)
+        public TaskDao(AppDbContext context)
         {
-            this.dbContext = dbContext;
+            this.context = context;
+        }
+
+        public async Task<IEnumerable<TaskModel>> GetTasks()
+        {
+            return await context.Tasks.ToListAsync();
+        }
+
+        public async Task<TaskModel?> GetTask(int id)
+        {
+            return await context.Tasks.FindAsync(id);
         }
 
         public void Create(TaskModel task)
         {
-            dbContext.Tasks.Add(task);
-            dbContext.SaveChanges();
+            context.Tasks.Add(task);
+            context.SaveChanges();
         }
 
         public void CreateMultiple(IEnumerable<TaskModel> tasks)
         {
-            dbContext.Tasks.AddRange(tasks);
-            dbContext.SaveChanges();
-        }
-
-        public IEnumerable<TaskModel> GetAll()
-        {
-            return dbContext.Tasks;
-        }
-
-        public TaskModel? GetById(int id)
-        {
-            return dbContext.Tasks.SingleOrDefault(t => t.Id == id);
+            context.Tasks.AddRange(tasks);
+            context.SaveChanges();
         }
     }
 }
