@@ -6,16 +6,16 @@ namespace Server.DAL.DAOs
 {
     public class StatusDao
     {
-        private readonly AppDbContext dbContext;
+        private readonly AppDbContext context;
 
-        public StatusDao(AppDbContext dbContext)
+        public StatusDao(AppDbContext context)
         {
-            this.dbContext = dbContext;
+            this.context = context;
         }
 
-        public IEnumerable<StatusModel> GetAll()
+        public async Task<IEnumerable<StatusModel>> GetAll()
         {
-            return dbContext.StatusTypes.AsNoTracking().ToList();
+            return await context.StatusTypes.ToListAsync();
         }
     }
 }
